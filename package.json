@@ -1,0 +1,40 @@
+{
+  "name": "strapi-starter-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "develop": "next dev",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "next build && next export",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^4.5.0",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.4",
+    "moment": "^2.24.0",
+    "next": "^11.0.0",
+    "nprogress": "^0.2.0",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-markdown": "^4.2.2",
+    "react-moment": "^0.9.6",
+    "react-slick": "^0.28.1",
+    "react-swipeable": "^6.2.0",
+    "slick-carousel": "^1.8.1",
+    "swr": "^1.0.1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.13.2",
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1"
+  }
+}
