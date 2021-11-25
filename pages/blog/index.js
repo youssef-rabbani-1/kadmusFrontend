@@ -5,27 +5,24 @@ import { makeStyles } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Seo from "../../components/seo"
 import { fetchAPI } from "../../lib/api"
-import { useRouter } from "next/router";
-
-
+import { useRouter } from "next/router"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: "0 4em",
     "@media (max-width: 600px)": {
       padding: "0 12px",
-    },
+    }
   },
   title: {
     padding: "3em",
   },
   body: {
     minHeight:"70vh",
-  },
+  }
 }))
 
 const App = ({ articles, categories, homepage, blog}) => {
-
   const mobile = useMediaQuery("(max-width:600px)")
   console.log(blog)
   const { root, title, body } = useStyles()

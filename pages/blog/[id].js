@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Article = ({ article, categories, locale }) => {
   const { root, container, image } = useStyles()
-console.log(locale)
+
   const imageUrl = getStrapiMedia(article.image)
 
   const seo = {
@@ -90,7 +90,6 @@ export async function getStaticPaths() {
         locale: locale.locale,
       })
     })
-    console.log(definedPaths)
   })
   return {
     paths: definedPaths.map((path) => ({
