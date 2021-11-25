@@ -37,7 +37,6 @@ const App = ({ groupedGuides }) => {
   const { title, content } = useStyles()
 
   const keys = Object.keys(groupedGuides)
-
   return keys.map((key, index) => {
     return (
       <Grid key={index} container>
@@ -46,11 +45,12 @@ const App = ({ groupedGuides }) => {
             {key}
           </Typography>
         </Grid>
-          <Carousel className={content}>
-            <GroupedGuides element guides={groupedGuides[key]} />
-          </Carousel>
+        <Carousel className={content}>
+          <GroupedGuides element guides={groupedGuides[key]} />
+        </Carousel>
       </Grid>
     )
   })
+
 }
 export default App

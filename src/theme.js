@@ -8,17 +8,19 @@ const theme = createTheme({
     },
     background: {
       paper: "#fff",
-      default: "#fafafa",
+      default: "#0f0b1c",
+      defaultDark:"#252222",
+      secondary:"#30284b"
     },
     primary: {
-      light: "#7986cb",
-      main: "#3f51b5",
-      dark: "#303f9f",
+      light: "#ffffff",
+      main: "#ffffff",
+      dark: "#686469",
       contrastText: "#fff",
     },
     secondary: {
       light: "#ff4081",
-      main: "#f50057",
+      main: "#923ba2",
       dark: "#c51162",
       contrastText: "#fff",
     },

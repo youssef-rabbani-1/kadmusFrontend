@@ -1,6 +1,7 @@
 import React from "react"
 import Link from "next/link"
 import {useRouter} from "next/router"
+import LiveChart from "../components/liveChart"
 
 export default function App() {
   const { asPath, locale } = useRouter();
@@ -22,6 +23,7 @@ export default function App() {
     >
       to /fr/another
     </div>
+    <LiveChart/>
     </React.Fragment>
   )
 }

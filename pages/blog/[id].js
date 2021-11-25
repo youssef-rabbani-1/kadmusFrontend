@@ -22,9 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Article = ({ article, categories }) => {
+const Article = ({ article, categories, locale }) => {
   const { root, container, image } = useStyles()
-
+console.log(locale)
   const imageUrl = getStrapiMedia(article.image)
 
   const seo = {
@@ -104,17 +104,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params, locale }) {
-  console.log("Called")
   const article = await fetchAPI(
     `/articles?_locale=${locale
       .toString()
       .substring(0, 2)}&id=${params.id.toString()}`
-    //`/articles?_locale=ar&id=8`
   )
   const categories = await fetchAPI("/categories")
 
   return {
-    props: { article: article[0], categories },
+    props: { article: article[0], categories, locale },
     revalidate: 1,
   }
 }

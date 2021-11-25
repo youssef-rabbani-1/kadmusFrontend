@@ -16,10 +16,10 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Link from "next/link"
 import React from "react"
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   header: {
     position: "sticky",
-    backgroundColor: "#400CCC",
+    backgroundColor: theme.palette.background.default,
     paddingRight: "79px",
     paddingLeft: "118px",
     "@media (max-width: 900px)": {
@@ -159,7 +159,7 @@ export default function Header() {
   }
   return (
     <React.Fragment>
-      <AppBar className={header}>
+      <AppBar className={header} elevation={0}>
         {mobileView ? displayMobile() : displayDesktop()}
       </AppBar>
     </React.Fragment>

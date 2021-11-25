@@ -20,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
     padding: "3em",
   },
   body: {
-    padding: "0 4em",
+    minHeight:"70vh",
   },
 }))
 
-const App = ({ articles, categories, homepage, blog }) => {
+const App = ({ articles, categories, homepage, blog}) => {
 
   const mobile = useMediaQuery("(max-width:600px)")
-
+  console.log(blog)
   const { root, title, body } = useStyles()
   return (
     <div className={root}>
@@ -44,7 +44,7 @@ const App = ({ articles, categories, homepage, blog }) => {
           <Typography variant="h2">{blog.hero.title}</Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={mobile ? 2 : 6}>
+      <Grid container spacing={mobile ? 2 : 6} className={body}>
         <Articles articles={articles} />
       </Grid>
     </div>
@@ -54,14 +54,14 @@ const App = ({ articles, categories, homepage, blog }) => {
 export async function getStaticProps({locale}) {
   // Run API calls in parallel
   const [articles, categories, homepage, blog] = await Promise.all([
-    fetchAPI(`/articles?_locale=${locale.substring(0, 2)}`),
+    fetchAPI(`/articles?_locale=${locale.toString().substring(0, 2)}`),
     fetchAPI("/categories"),
     fetchAPI("/homepage"),
     fetchAPI("/blog"),
   ])
 
   return {
-    props: { articles, categories, homepage, blog },
+    props: { articles, categories, homepage ,blog },
     revalidate: 1,
   }
 }

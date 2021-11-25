@@ -38,7 +38,7 @@ export default function App({ guide }) {
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia title="img">
-            <NextImage image={guide.image} />
+           { <NextImage image={guide.image} />}
           </CardMedia>
           <CardContent>
             <Typography

@@ -4,8 +4,8 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
 import ComingSoon from "../components/coming-soon"
-import Banner from "../components/banner"
-import Cards from "../components/cards"
+import Banner from "../components/HomePage/banner"
+import Cards from "../components/HomePage/cards"
 
 const Home = ({ articles, categories, homepage, blog }) => {
   return (
