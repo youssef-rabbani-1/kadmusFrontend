@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core"
 import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import YouTubeIcon from "@material-ui/icons/YouTube"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.defaultDark,
@@ -37,8 +39,10 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const { root, container, title, description, linkText, socialIcon, content } =
     useStyles()
+  const mobile = useMediaQuery("(max-width:600px)")
+
   return (
-    <Grid container className={root} spacing={1}>
+    <Grid container className={root}>
       <Grid item xs={12} md={4} className={content}>
         <Typography variant="h5" color="primary" className={title}>
           Logo

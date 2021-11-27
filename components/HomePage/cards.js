@@ -1,13 +1,15 @@
 import React from "react"
 import DescriptionCard from "../descriptionCard"
 import { Grid, makeStyles } from "@material-ui/core"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.default,
   },
   card: {
-    padding: "48px",
+    padding:"0 36px",
+    marginBottom: "60px",
   },
 }))
 const items = [
@@ -29,6 +31,8 @@ const items = [
 ]
 export default function App() {
   const { root, card } = useStyles()
+  const mobile = useMediaQuery("(max-width:600px)")
+
   return (
     <Grid
       container

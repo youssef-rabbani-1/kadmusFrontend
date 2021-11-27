@@ -1,6 +1,7 @@
 import React from "react"
 import { Grid, Typography, Button, makeStyles } from "@material-ui/core"
 import NextImage from "../image"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     height: "300px",
+  },
+  title: {
+    maxWidth: "430px",
   },
   mainTitle: {
     paddingTop: "100px",
@@ -34,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const { root, title, body, coloredTitle, coloredText, gradientButton } =
     useStyles()
+  const mobile = useMediaQuery("(max-width:600px)")
 
   return (
     <Grid
@@ -54,10 +59,9 @@ export default function App() {
         className={body}
       >
         <Grid item xs={12}>
-          <Typography variant="h3" color="primary">
+          <Typography variant="h3" color="primary" className={title}>
             Change Your Life
-            <br />
-            <span className={coloredTitle}>with Cryptocurrency</span>
+            <span className={coloredTitle}> with Cryptocurrency</span>
           </Typography>
           <Typography variant="body1" className={coloredText}>
             Change your life by taking the leap into Cryptocurrencies, NFT and
