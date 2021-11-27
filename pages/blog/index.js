@@ -12,17 +12,17 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 4em",
     "@media (max-width: 600px)": {
       padding: "0 12px",
-    }
+    },
   },
   title: {
     padding: "3em",
   },
   body: {
-    minHeight:"70vh",
-  }
+    minHeight: "70vh",
+  },
 }))
 
-const App = ({ articles, categories, homepage, blog}) => {
+const App = ({ articles, categories, homepage, blog }) => {
   const mobile = useMediaQuery("(max-width:600px)")
   console.log(blog)
   const { root, title, body } = useStyles()
@@ -48,7 +48,7 @@ const App = ({ articles, categories, homepage, blog}) => {
   )
 }
 
-export async function getStaticProps({locale}) {
+export async function getStaticProps({ locale }) {
   // Run API calls in parallel
   const [articles, categories, homepage, blog] = await Promise.all([
     fetchAPI(`/articles?_locale=${locale.toString().substring(0, 2)}`),
@@ -58,7 +58,7 @@ export async function getStaticProps({locale}) {
   ])
 
   return {
-    props: { articles, categories, homepage ,blog },
+    props: { articles, categories, homepage, blog },
     revalidate: 1,
   }
 }
