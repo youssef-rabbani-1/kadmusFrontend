@@ -12,15 +12,12 @@ import HeaderRenderer from "../../components/renderers/HeaderRenderer"
 import BodyRenderer from "../../components/renderers/BodyRenderer"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginTop: "12px",
   },
-  container: {
-
-  },
+  container: {},
   image: {
     padding: "0 !important",
     marginBottom: "24px",
@@ -63,7 +60,9 @@ const Guide = ({ guide, categories }) => {
             <NextImage image={guide.image} className={container} />
           </Grid>
           <Grid item xs={12} lg={10} className={container}>
-            <Typography variant={mobile ? "h4" : "h3"}>{guide.title}</Typography>
+            <Typography variant={mobile ? "h4" : "h3"}>
+              {guide.title}
+            </Typography>
             <Typography variant="h6" color="textSecondary">
               {guide.description}
             </Typography>
