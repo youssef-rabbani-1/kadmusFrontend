@@ -6,7 +6,7 @@ const Layout = ({ children, categories, seo }) => (
   <>
     <MUINav />
     {children}
-    <Footer/>
+    <Footer />
   </>
 )
 

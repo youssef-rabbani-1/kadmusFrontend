@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     height: "600px",
   },
   body: {
-    height: "300px"
+    height: "300px",
   },
   mainTitle: {
     paddingTop: "100px",
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default function App() {
   const { root, title, body, coloredTitle, coloredText, gradientButton } =
-    useStyles();
+    useStyles()
 
   return (
     <Grid
@@ -41,7 +41,8 @@ export default function App() {
       className={root}
       direction="row"
       justifyContent="center"
-      alignItems="center">
+      alignItems="center"
+    >
       <Grid
         container
         item
@@ -75,9 +76,8 @@ export default function App() {
             </Button>
           </Grid>
         </Grid>
-
       </Grid>
-      <Grid item xs={12}md={6}>
+      <Grid item xs={12} md={6}>
         {/*<NextImage image={article.image} />*/}
       </Grid>
     </Grid>

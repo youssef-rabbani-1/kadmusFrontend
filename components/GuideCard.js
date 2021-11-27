@@ -14,21 +14,20 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 250,
   },
-  title:{
+  title: {
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
     overflow: "hidden",
 
-
-    '@supports (-webkit-line-clamp: 3)': {
-      overflow:"hidden",
+    "@supports (-webkit-line-clamp: 3)": {
+      overflow: "hidden",
       textOverflow: "ellipsis",
       whiteSpace: "initial",
       display: "-webkit-box",
       "-webkit-line-clamp": "3",
-      "-webkit-box-orient": "vertical"
-    }
-  }
+      "-webkit-box-orient": "vertical",
+    },
+  },
 })
 
 export default function App({ guide }) {
@@ -37,9 +36,7 @@ export default function App({ guide }) {
     <Link as={`/guides/${guide.slug}`} href={"/guides/[id]"}>
       <Card className={classes.root}>
         <CardActionArea>
-          <CardMedia title="img">
-           { <NextImage image={guide.image} />}
-          </CardMedia>
+          <CardMedia title="img">{<NextImage image={guide.image} />}</CardMedia>
           <CardContent>
             <Typography
               variant="h6"

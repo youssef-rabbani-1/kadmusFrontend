@@ -3,13 +3,12 @@ import DescriptionCard from "../descriptionCard"
 import { Grid, makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
-  root:{
+  root: {
     backgroundColor: theme.palette.background.default,
   },
   card: {
-    padding:"48px"
-  }
-
+    padding: "48px",
+  },
 }))
 const items = [
   {
@@ -29,8 +28,7 @@ const items = [
   },
 ]
 export default function App() {
-  const { root, card } =
-    useStyles();
+  const { root, card } = useStyles()
   return (
     <Grid
       container
@@ -42,7 +40,7 @@ export default function App() {
       {items.map((item) => {
         return (
           <Grid item key={item.title} className={card}>
-            <DescriptionCard data={item}  />
+            <DescriptionCard data={item} />
           </Grid>
         )
       })}

@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   title: {
     margin: "24px 0",
   },
-  content:{
-    marginBottom:"12px",
+  content: {
+    marginBottom: "12px",
   },
 }))
 function App({ guides }) {
@@ -30,4 +30,5 @@ function App({ guides }) {
       </Grid>
     )
   })
-} export default App();
+}
+export default App()

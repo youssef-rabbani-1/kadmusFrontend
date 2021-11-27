@@ -51,6 +51,5 @@ const App = ({ groupedGuides }) => {
       </Grid>
     )
   })
-
 }
 export default App
