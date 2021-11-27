@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     height: "400px",
   },
   container: {
-    padding: "44px 32px",
+    padding: "44px 0",
   },
   title: {
     marginBottom: "1.35rem",
