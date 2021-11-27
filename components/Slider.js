@@ -23,8 +23,8 @@ function App({ guides }) {
 
   return guides.map((item) => {
     return (
-      <Grid item>
-        <Paper className={card} key={`${item.id}`}>
+      <Grid item key={`${item.id}`}>
+        <Paper className={card}>
           <Card guide={item} />
         </Paper>
       </Grid>
