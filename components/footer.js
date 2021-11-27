@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.defaultDark,
     padding: "2em 4em",
     "@media (max-width: 600px)": {
-      padding: "0 12px",
+      padding: "24px 12px",
     },
     minHeight: "400px",
   },
