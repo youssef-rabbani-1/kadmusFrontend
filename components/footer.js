@@ -8,11 +8,11 @@ import YouTubeIcon from "@material-ui/icons/YouTube"
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.defaultDark,
-    padding: "0 4em",
+    padding: "2em 4em",
     "@media (max-width: 600px)": {
       padding: "0 12px",
     },
-    height: "400px",
+    minHeight: "400px",
   },
   container: {
     padding: "44px 0",
@@ -30,13 +30,16 @@ const useStyles = makeStyles((theme) => ({
   description: {
     lineHeight: "25px",
   },
+  content: {
+    marginBottom: "12px",
+  },
 }))
 export default function App() {
-  const { root, container, title, description, linkText, socialIcon } =
+  const { root, container, title, description, linkText, socialIcon, content } =
     useStyles()
   return (
-    <Grid container className={root}>
-      <Grid item xs={6} md={4} className={container}>
+    <Grid container className={root} spacing={1}>
+      <Grid item xs={12} md={4} className={content}>
         <Typography variant="h5" color="primary" className={title}>
           Logo
         </Typography>
@@ -48,7 +51,7 @@ export default function App() {
           in a short text
         </Typography>
       </Grid>
-      <Grid item xs={6} md={4} className={container}>
+      <Grid item xs={12} md={4} className={content}>
         <Typography variant="h5" color="primary" className={title}>
           Our Services
         </Typography>
@@ -65,12 +68,11 @@ export default function App() {
           About Us
         </Typography>
       </Grid>
-      <Grid item xs={6} md={4} className={container}>
+      <Grid item xs={12} md={4}>
         <Typography variant="h5" color="primary" className={title}>
           Get in Touch
         </Typography>
-
-        <Grid container spacing={1}>
+        <Grid container spacing={1} className={content}>
           <Grid item>
             <LinkedInIcon fontSize="large" className={socialIcon} />
           </Grid>
