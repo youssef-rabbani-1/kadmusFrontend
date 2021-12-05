@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
 const App = ({ articles, categories, homepage, blog }) => {
   const mobile = useMediaQuery("(max-width:600px)")
-  console.log(blog)
   const { root, title, body } = useStyles()
   return (
     <div className={root}>
@@ -38,7 +37,9 @@ const App = ({ articles, categories, homepage, blog }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="h2">{blog.hero.title}</Typography>
+          <Typography variant={mobile ? "h4" : "h2"}>
+            {blog.hero.title}
+          </Typography>
         </Grid>
       </Grid>
       <Grid container spacing={mobile ? 2 : 6} className={body}>

@@ -1,12 +1,11 @@
 import MUINav from "./MUINav"
-import Grid from "@material-ui/core/Grid"
 import Footer from "../components/footer"
 
-const Layout = ({ children, categories, seo }) => (
+const Layout = ({ children, categories, seo, logo }) => (
   <>
-    <MUINav />
+    <MUINav logo={logo} />
     {children}
-    <Footer />
+    <Footer logo={logo} />
   </>
 )
 

@@ -41,9 +41,12 @@ const App = ({ guides, homepage }) => {
   return (
     <div className={root}>
       {/*<Seo seo={homepage.seo} />*/}
-      <Grid container spacing={mobile ? 2 : 6} className={body}>
+      {/*<Grid container spacing={mobile ? 2 : 6} className={body}>
+        
+      </Grid>*/}
+      <div className={body}>
         <Guides groupedGuides={groupedGuides} />
-      </Grid>
+      </div>
     </div>
   )
 }

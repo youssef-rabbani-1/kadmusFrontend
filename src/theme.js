@@ -5,9 +5,12 @@ const theme = createTheme({
     common: {
       black: "#000",
       white: "#fff",
+      first:"#5741d9",
+      second:"#43196f",
+      third:"#0385e6"
     },
     background: {
-      paper: "#fff",
+      paper: "#ffffff",
       default: "#0f0b1c",
       defaultDark:"#252222",
       secondary:"#30284b"

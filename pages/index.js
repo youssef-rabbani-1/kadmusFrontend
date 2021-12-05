@@ -5,7 +5,7 @@ import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
 import ComingSoon from "../components/coming-soon"
 import Banner from "../components/HomePage/banner"
-import Cards from "../components/HomePage/cards"
+import Cards from "../components/HomePage/description-cards"
 
 const Home = ({ articles, categories, homepage, blog }) => {
   return (

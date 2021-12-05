@@ -19,7 +19,7 @@ import React from "react"
 const useStyles = makeStyles((theme) => ({
   header: {
     position: "sticky",
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.common.black,
     paddingRight: "79px",
     paddingLeft: "118px",
     "@media (max-width: 900px)": {

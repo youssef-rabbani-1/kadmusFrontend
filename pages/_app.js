@@ -14,6 +14,7 @@ export const GlobalContext = createContext({})
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps
+  console.log(global.defaultSeo.shareImage)
   return (
     <>
       <Head>
@@ -21,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalContext.Provider value={global}>
-          <Layout>
+          <Layout logo={global.defaultSeo.shareImage}>
             <Component {...pageProps} />
           </Layout>
         </GlobalContext.Provider>

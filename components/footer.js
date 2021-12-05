@@ -2,10 +2,12 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core"
-import LinkedInIcon from "@material-ui/icons/LinkedIn"
-import FacebookIcon from "@material-ui/icons/Facebook"
-import YouTubeIcon from "@material-ui/icons/YouTube"
+import RedditIcon from "@material-ui/icons/Reddit"
+import TwitterIcon from "@material-ui/icons/Twitter"
+import InstagramIcon from "@material-ui/icons/Instagram"
+import IconButton from "@material-ui/core/IconButton"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import Link from "next/link"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,10 +37,21 @@ const useStyles = makeStyles((theme) => ({
   content: {
     marginBottom: "12px",
   },
+  iconButton: {
+    padding: "0 !important",
+  },
 }))
 export default function App() {
-  const { root, container, title, description, linkText, socialIcon, content } =
-    useStyles()
+  const {
+    root,
+    container,
+    title,
+    description,
+    linkText,
+    socialIcon,
+    content,
+    iconButton,
+  } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
 
   return (
@@ -59,18 +72,26 @@ export default function App() {
         <Typography variant="h5" color="primary" className={title}>
           Our Services
         </Typography>
-        <Typography variant="subtitle1" className={linkText}>
-          Home
-        </Typography>
-        <Typography variant="subtitle1" className={linkText}>
-          News
-        </Typography>
-        <Typography variant="subtitle1" className={linkText}>
-          Guides
-        </Typography>
-        <Typography variant="subtitle1" className={linkText}>
-          About Us
-        </Typography>
+        <Link href="/" passHref>
+          <Typography variant="subtitle1" className={linkText}>
+            Home
+          </Typography>
+        </Link>
+        <Link href="/blog" passHref>
+          <Typography variant="subtitle1" className={linkText}>
+            News
+          </Typography>
+        </Link>
+        <Link href="/guides" passHref>
+          <Typography variant="subtitle1" className={linkText}>
+            Guides
+          </Typography>
+        </Link>
+        <Link href="/" passHref>
+          <Typography variant="subtitle1" className={linkText}>
+            About Us
+          </Typography>
+        </Link>
       </Grid>
       <Grid item xs={12} md={4}>
         <Typography variant="h5" color="primary" className={title}>
@@ -78,13 +99,37 @@ export default function App() {
         </Typography>
         <Grid container spacing={1} className={content}>
           <Grid item>
-            <LinkedInIcon fontSize="large" className={socialIcon} />
+            <a
+              href="https://www.instagram.com/cryptocad/"
+              passhref="true"
+              target="_blank"
+            >
+              <IconButton aria-label="Instagram" className={iconButton}>
+                <InstagramIcon fontSize="large" className={socialIcon} />
+              </IconButton>
+            </a>
           </Grid>
           <Grid item>
-            <FacebookIcon fontSize="large" className={socialIcon} />
+            <a
+              href="https://www.reddit.com/user/cryptocadchats"
+              passhref="true"
+              target="_blank"
+            >
+              <IconButton aria-label="Reddit" className={iconButton}>
+                <RedditIcon fontSize="large" className={socialIcon} />
+              </IconButton>
+            </a>
           </Grid>
           <Grid item>
-            <YouTubeIcon fontSize="large" className={socialIcon} />
+            <a
+              href="https://twitter.com/cryptocadtweets"
+              passhref="true"
+              target="_blank"
+            >
+              <IconButton aria-label="Twitter" className={iconButton}>
+                <TwitterIcon fontSize="large" className={socialIcon} />
+              </IconButton>
+            </a>
           </Grid>
         </Grid>
       </Grid>

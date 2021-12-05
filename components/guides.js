@@ -25,7 +25,7 @@ function GroupedGuides({ key, guides }) {
     return (
       <CarouselItem key={`${item.id}`}>
         <Grid item>
-          <Paper className={card}>
+          <Paper className={card} elevation={0}>
             <Card guide={item} />
           </Paper>
         </Grid>
