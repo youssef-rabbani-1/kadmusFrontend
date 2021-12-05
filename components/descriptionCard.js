@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     color: theme.palette.primary.main,
-  }
+  },
 }))
 
 export default function App({ data }) {

@@ -66,7 +66,7 @@ export default function App({ article }) {
           </Grid>
           <Grid container item xs={12} className={classes.actions}>
             <CardActions disableSpacing>
-              <Link as={`/blog/${article.id}`} href="/blog/[id]">
+              <Link as={`/blog/${article.id}`} href="/blog/[id]" passHref>
                 <Button variant="outlined" color="primary">
                   Read More
                 </Button>

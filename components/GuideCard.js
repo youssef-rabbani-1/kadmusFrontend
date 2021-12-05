@@ -33,7 +33,7 @@ const useStyles = makeStyles({
 export default function App({ guide }) {
   const classes = useStyles()
   return (
-    <Link as={`/guides/${guide.slug}`} href={"/guides/[id]"}>
+    <Link as={`/guides/${guide.slug}`} href={"/guides/[id]"} passHref>
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia title="img">{<NextImage image={guide.image} />}</CardMedia>

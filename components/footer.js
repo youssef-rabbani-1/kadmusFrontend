@@ -103,6 +103,7 @@ export default function App() {
               href="https://www.instagram.com/cryptocad/"
               passhref="true"
               target="_blank"
+              rel="noreferrer"
             >
               <IconButton aria-label="Instagram" className={iconButton}>
                 <InstagramIcon fontSize="large" className={socialIcon} />
@@ -114,6 +115,7 @@ export default function App() {
               href="https://www.reddit.com/user/cryptocadchats"
               passhref="true"
               target="_blank"
+              rel="noreferrer"
             >
               <IconButton aria-label="Reddit" className={iconButton}>
                 <RedditIcon fontSize="large" className={socialIcon} />
@@ -125,6 +127,7 @@ export default function App() {
               href="https://twitter.com/cryptocadtweets"
               passhref="true"
               target="_blank"
+              rel="noreferrer"
             >
               <IconButton aria-label="Twitter" className={iconButton}>
                 <TwitterIcon fontSize="large" className={socialIcon} />
