@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cta: {
     color: theme.palette.common.white,
-    background: "#5741d9",
+    background: "#477cd4",
   },
 }))
 export default function App() {
