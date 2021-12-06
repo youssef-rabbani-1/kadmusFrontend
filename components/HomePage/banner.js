@@ -67,6 +67,7 @@ export default function App() {
         playing
         loop
         muted
+        playsinline
         width="100%"
         height="100%"
       />
