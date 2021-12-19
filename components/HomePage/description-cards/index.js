@@ -54,12 +54,8 @@ export default function App() {
         <Typography variant="h5">{t("cardTitle")}</Typography>
       </div>
       <div className={root}>
-        <Link href="/guides" passHref>
-          <BeginnerCard className={card} />
-        </Link>
-        <Link href="/blog" passHref>
-          <IntermediateCard className={card} />
-        </Link>
+        <BeginnerCard className={card} />
+        <IntermediateCard className={card} />
         <ExpertCard className={card} />
       </div>
       <Grid container></Grid>

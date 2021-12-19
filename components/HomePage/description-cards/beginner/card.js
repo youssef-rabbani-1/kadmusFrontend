@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
 import { useTranslation } from "next-i18next"
+import Link from "next/link"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,12 +27,14 @@ export default function App({}) {
     description: t("card1"),
   }
   return (
-    <Card className={root} elevation={0}>
-      <CardContent>
-        <Typography variant="h5" component="p" className={text}>
-          {data.description}
-        </Typography>
-      </CardContent>
-    </Card>
+    <Link href="/guides" passHref>
+      <Card className={root} elevation={0}>
+        <CardContent>
+          <Typography variant="h5" component="p" className={text}>
+            {data.description}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Link>
   )
 }
