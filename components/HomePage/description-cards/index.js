@@ -2,6 +2,7 @@ import React from "react"
 import DescriptionCard from "../../descriptionCard"
 import { Grid, makeStyles, Typography } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import Link from "next/link"
 import BeginnerCard from "./beginner/card"
 import IntermediateCard from "./intermediate/card"
 import ExpertCard from "./expert/card"
@@ -53,8 +54,12 @@ export default function App() {
         <Typography variant="h5">{t("cardTitle")}</Typography>
       </div>
       <div className={root}>
-        <BeginnerCard className={card} />
-        <IntermediateCard className={card} />
+        <Link href="/guides" passHref>
+          <BeginnerCard className={card} />
+        </Link>
+        <Link href="/blog" passHref>
+         <IntermediateCard className={card} />
+        </Link>
         <ExpertCard className={card} />
       </div>
       <Grid container></Grid>
