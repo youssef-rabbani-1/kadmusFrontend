@@ -9,7 +9,7 @@ import { Grid, Typography, makeStyles } from "@material-ui/core"
 import LinkRenderer from "../../components/renderers/LinkRenderer"
 import HeaderRenderer from "../../components/renderers/HeaderRenderer"
 import BodyRenderer from "../../components/renderers/BodyRenderer"
-import { useRouter } from "next/router"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -111,7 +111,12 @@ export async function getStaticProps({ params, locale }) {
   const categories = await fetchAPI("/categories")
 
   return {
-    props: { article: article[0], categories, locale },
+    props: {
+      ...(await serverSideTranslations(locale, ["footer"])),
+      article: article[0],
+      categories,
+      locale,
+    },
     revalidate: 1,
   }
 }

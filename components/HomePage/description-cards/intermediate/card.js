@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
 import CardContent from "@material-ui/core/CardContent"
 import Typography from "@material-ui/core/Typography"
+import { useTranslation } from "next-i18next"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function App({}) {
   const { root, text } = useStyles()
+  const { t } = useTranslation("homepage")
+
   const data = {
-    description:
-      "I know the basics but I need to know the latest news that have an impact on crypto prices.",
+    description: t("card2"),
   }
   return (
     <Card className={root} elevation={0}>

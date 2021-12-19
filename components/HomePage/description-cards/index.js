@@ -5,6 +5,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import BeginnerCard from "./beginner/card"
 import IntermediateCard from "./intermediate/card"
 import ExpertCard from "./expert/card"
+import { useTranslation } from "next-i18next"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -43,11 +45,12 @@ const useStyles = makeStyles((theme) => ({
 export default function App() {
   const { root, card, title } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
+  const { t } = useTranslation("homepage")
 
   return (
     <React.Fragment>
       <div className={title}>
-        <Typography variant="h5">How can we help you get started?</Typography>
+        <Typography variant="h5">{t("cardTitle")}</Typography>
       </div>
       <div className={root}>
         <BeginnerCard className={card} />

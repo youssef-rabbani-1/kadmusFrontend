@@ -9,12 +9,13 @@ import { getStrapiMedia } from "../lib/media"
 import { ThemeProvider } from "@material-ui/core/styles"
 import Layout from "../components/layout"
 import theme from "../src/theme"
+
+import { appWithTranslation } from 'next-i18next';
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps
-  console.log(global.defaultSeo.shareImage)
   return (
     <>
       <Head>
@@ -44,4 +45,4 @@ MyApp.getInitialProps = async (ctx) => {
   return { ...appProps, pageProps: { global } }
 }
 
-export default MyApp
+export default appWithTranslation(MyApp) 

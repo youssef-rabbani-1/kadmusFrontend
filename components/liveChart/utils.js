@@ -5,8 +5,8 @@ export const formatData = (data) => {
       {
         label: "Price",
         data: [],
-        backgroundColor: "rgb(255, 99, 132, 0.8)",
-        borderColor: "rgba(255, 99, 132, 0.2)",
+        backgroundColor: "linear-gradient(#5052c7, #ffff)",
+        borderColor: "rgb(69, 67, 201, 0.8)",
         fill: false,
       },
     ],
@@ -29,8 +29,7 @@ export const formatData = (data) => {
 
   priceArr.reverse()
   dates.reverse()
-  finalData.labels = dates
-  finalData.datasets[0].data = priceArr
-
+  finalData.labels = dates.slice(-40)
+  finalData.datasets[0].data = priceArr.slice(-40)
   return finalData
 }

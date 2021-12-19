@@ -3,6 +3,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import LiveChart from "../components/liveChart"
 
+
 export default function App() {
   const { asPath, locale } = useRouter()
   const router = useRouter()

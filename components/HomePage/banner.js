@@ -3,6 +3,7 @@ import { Grid, Typography, Button, makeStyles } from "@material-ui/core"
 import NextImage from "../image"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ReactPlayer from "react-player"
+import { useTranslation } from "next-i18next"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +53,7 @@ export default function App() {
   const { root, bannerText, title, coloredTitle, body, secondaryText, cta } =
     useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
-
+  const { t } = useTranslation("homepage")
   return (
     <Grid
       container
@@ -62,7 +63,7 @@ export default function App() {
     >
       <ReactPlayer
         url={
-          "https://res.cloudinary.com/darina-zein-kadmus/video/upload/v1638719549/bitcoins_rotating_d833f827ee.mp4"
+          "https://res.cloudinary.com/darina-zein-kadmus/video/upload/v1639921663/homepage_banner_bkgd_26529cca0d.mp4"
         }
         playing
         loop
@@ -82,23 +83,21 @@ export default function App() {
         <Grid container item xs={12} md={6}>
           <Grid item xs={12} className={bannerText}>
             <Typography variant="h3" color="primary" className={title}>
-              Change Your Life
-              <span className={coloredTitle}> with Cryptocurrency</span>
+              {t("title")}
             </Typography>
             <Typography variant="body1" className={secondaryText}>
-              Change your life by taking the leap into Cryptocurrencies, NFT and
-              DeFi
+              {t("sub-title")}
             </Typography>
           </Grid>
           <Grid container>
             <Grid item xs={6} md={4}>
               <Button size="medium" color="primary">
-                Learn More
+                {t("cta1")}
               </Button>
             </Grid>
             <Grid item xs={6} md={4}>
               <Button size="medium" variant="contained" className={cta}>
-                Contact Us
+                {t("cta2")}
               </Button>
             </Grid>
           </Grid>

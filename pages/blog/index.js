@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Seo from "../../components/seo"
 import { fetchAPI } from "../../lib/api"
-import { useRouter } from "next/router"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +59,13 @@ export async function getStaticProps({ locale }) {
   ])
 
   return {
-    props: { articles, categories, homepage, blog },
+    props: {
+      ...(await serverSideTranslations(locale, ["footer"])),
+      articles,
+      categories,
+      homepage,
+      blog,
+    },
     revalidate: 1,
   }
 }

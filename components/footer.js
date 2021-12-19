@@ -8,6 +8,7 @@ import InstagramIcon from "@material-ui/icons/Instagram"
 import IconButton from "@material-ui/core/IconButton"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Link from "next/link"
+import { useTranslation } from "next-i18next"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   content: {
     marginBottom: "12px",
   },
+  section: {
+    maxWidth: "275px",
+  },
   iconButton: {
     padding: "0 !important",
   },
@@ -51,26 +55,26 @@ export default function App() {
     socialIcon,
     content,
     iconButton,
+    section,
   } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
+  const { t } = useTranslation("footer")
 
   return (
     <Grid container className={root}>
       <Grid item xs={12} md={4} className={content}>
-        <Typography variant="h5" color="primary" className={title}>
-          Logo
-        </Typography>
-        <Typography variant="body2" color="primary" className={description}>
-          Information about kadmus to be placed here.
-          <br />
-          ie. about us, our vision, inspiration, what we provide.
-          <br />
-          in a short text
-        </Typography>
+        <div className={section}>
+          <Typography variant="h5" color="primary" className={title}>
+            Logo
+          </Typography>
+          <Typography variant="body2" color="primary" className={description}>
+            {t("description")}
+          </Typography>
+        </div>
       </Grid>
       <Grid item xs={12} md={4} className={content}>
         <Typography variant="h5" color="primary" className={title}>
-          Our Services
+          {t("title2")}
         </Typography>
         <Link href="/" passHref>
           <Typography variant="subtitle1" className={linkText}>
@@ -95,7 +99,7 @@ export default function App() {
       </Grid>
       <Grid item xs={12} md={4}>
         <Typography variant="h5" color="primary" className={title}>
-          Get in Touch
+          {t("title3")}
         </Typography>
         <Grid container spacing={1} className={content}>
           <Grid item>

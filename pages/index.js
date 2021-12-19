@@ -1,11 +1,10 @@
 import React from "react"
 import Articles from "../components/articles"
-import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
-import ComingSoon from "../components/coming-soon"
 import Banner from "../components/HomePage/banner"
 import Cards from "../components/HomePage/description-cards"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const Home = ({ articles, categories, homepage, blog }) => {
   return (
@@ -23,7 +22,7 @@ const Home = ({ articles, categories, homepage, blog }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
   // Run API calls in parallel
   const [articles, categories, homepage, blog] = await Promise.all([
     fetchAPI("/articles"),
@@ -33,7 +32,14 @@ export async function getStaticProps() {
   ])
 
   return {
-    props: { articles, categories, homepage, blog },
+    props: {
+      ...(await serverSideTranslations(locale, ['homepage','footer'])),
+        articles,
+        categories,
+        homepage,
+        blog
+      
+    },
     revalidate: 1,
   }
 }

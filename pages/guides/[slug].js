@@ -2,7 +2,6 @@ import React from "react"
 import ReactMarkdown from "react-markdown"
 import Moment from "react-moment"
 import { fetchAPI } from "../../lib/api"
-import Layout from "../../components/layout"
 import NextImage from "../../components/image"
 import Seo from "../../components/seo"
 import { getStrapiMedia } from "../../lib/media"
@@ -11,6 +10,7 @@ import LinkRenderer from "../../components/renderers/LinkRenderer"
 import HeaderRenderer from "../../components/renderers/HeaderRenderer"
 import BodyRenderer from "../../components/renderers/BodyRenderer"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "24px 48px !important",
   },
 }))
-const Guide = ({ guide, categories }) => {
+const Guide = ({ guide }) => {
   const { root, container, content, image } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
 
@@ -102,12 +102,16 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, locale }) {
   const guides = await fetchAPI(`/guides?slug=${params.slug}`)
   const categories = await fetchAPI("/categories")
 
   return {
-    props: { guide: guides[0], categories },
+    props: {
+      ...(await serverSideTranslations(locale, ["homepage", "footer"])),
+      guide: guides[0],
+      categories,
+    },
     revalidate: 1,
   }
 }

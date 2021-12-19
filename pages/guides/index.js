@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Seo from "../../components/seo"
 import { fetchAPI } from "../../lib/api"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +52,7 @@ const App = ({ guides, homepage }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
   // Run API calls in parallel
   const [guides, homepage] = await Promise.all([
     fetchAPI("/guides"),
@@ -59,7 +60,11 @@ export async function getStaticProps() {
   ])
 
   return {
-    props: { guides, homepage },
+    props: {
+      ...(await serverSideTranslations(locale, ["homepage", "footer"])),
+      guides,
+      homepage,
+    },
     revalidate: 1,
   }
 }
