@@ -10,7 +10,7 @@ import { ThemeProvider } from "@material-ui/core/styles"
 import Layout from "../components/layout"
 import theme from "../src/theme"
 
-import { appWithTranslation } from 'next-i18next';
+import { appWithTranslation } from "next-i18next"
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
 
@@ -45,4 +45,4 @@ MyApp.getInitialProps = async (ctx) => {
   return { ...appProps, pageProps: { global } }
 }
 
-export default appWithTranslation(MyApp) 
+export default appWithTranslation(MyApp)

@@ -58,7 +58,7 @@ export default function App() {
           <BeginnerCard className={card} />
         </Link>
         <Link href="/blog" passHref>
-         <IntermediateCard className={card} />
+          <IntermediateCard className={card} />
         </Link>
         <ExpertCard className={card} />
       </div>

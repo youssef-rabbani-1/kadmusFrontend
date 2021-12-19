@@ -22,7 +22,7 @@ const Home = ({ articles, categories, homepage, blog }) => {
   )
 }
 
-export async function getStaticProps({locale}) {
+export async function getStaticProps({ locale }) {
   // Run API calls in parallel
   const [articles, categories, homepage, blog] = await Promise.all([
     fetchAPI("/articles"),
@@ -33,12 +33,11 @@ export async function getStaticProps({locale}) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['homepage','footer'])),
-        articles,
-        categories,
-        homepage,
-        blog
-      
+      ...(await serverSideTranslations(locale, ["homepage", "footer"])),
+      articles,
+      categories,
+      homepage,
+      blog,
     },
     revalidate: 1,
   }

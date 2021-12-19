@@ -1,26 +1,26 @@
-import React, { useRef } from "react";
-import { Line } from "react-chartjs-2";
+import React, { useRef } from "react"
+import { Line } from "react-chartjs-2"
 
 function Dashboard({ price, data }) {
   const opts = {
     plugins: {},
     legend: {
-      display: false
+      display: false,
     },
-    elements:{
-      point:{
-        radius:0
-      }
+    elements: {
+      point: {
+        radius: 0,
+      },
     },
     tooltips: {
       intersect: false,
-      mode: "index"
+      mode: "index",
     },
     responsive: true,
-    maintainAspectRatio: false
-  };
+    maintainAspectRatio: false,
+  }
   if (price === "0.00") {
-    return null;
+    return null
   }
   return (
     <div className="dashboard">
@@ -30,7 +30,7 @@ function Dashboard({ price, data }) {
         <Line data={data} options={opts} />
       </div>
     </div>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard
