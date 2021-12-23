@@ -89,7 +89,7 @@ const Guide = ({ guide }) => {
   )
 }
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
   const guides = await fetchAPI("/guides")
 
   return {
@@ -100,7 +100,7 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   }
-}
+}*/
 
 export async function getServerSideProps({ params, locale }) {
   const guides = await fetchAPI(`/guides?slug=${params.slug}`)

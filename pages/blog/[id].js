@@ -75,7 +75,7 @@ const Article = ({ article, categories, locale }) => {
   )
 }
 
-export async function getStaticPaths() {
+/*export async function getStaticPaths() {
   const enArticles = await fetchAPI("/articles")
   let definedPaths = []
 
@@ -100,7 +100,7 @@ export async function getStaticPaths() {
     })),
     fallback: false,
   }
-}
+}*/
 
 export async function getServerSideProps({ params, locale }) {
   const article = await fetchAPI(
