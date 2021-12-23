@@ -65,7 +65,6 @@ export async function getServerSideProps({ locale }) {
       guides,
       homepage,
     },
-    revalidate: 1,
   }
 }
 
