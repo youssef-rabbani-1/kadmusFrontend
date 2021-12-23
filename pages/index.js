@@ -40,7 +40,6 @@ export async function getStaticProps({ locale }) {
   const [categories, homepage] = await Promise.all([
     fetchAPI("/categories"),
     fetchAPI("/homepage"),
-
   ])
 
   return {
