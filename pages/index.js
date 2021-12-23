@@ -1,5 +1,4 @@
 import React from "react"
-import Articles from "../components/articles"
 import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
 import Banner from "../components/HomePage/banner"
@@ -32,33 +31,23 @@ const Home = ({ articles, categories, homepage, blog }) => {
       </Grid>
 
       <Cards />
-      {/* <Seo seo={homepage.seo} />
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <h1>{homepage.hero.title}</h1>
-          <Articles articles={articles} />
-        </div>
-      </div>*/}
     </React.Fragment>
   )
 }
 
 export async function getStaticProps({ locale }) {
   // Run API calls in parallel
-  const [articles, categories, homepage, blog] = await Promise.all([
-    fetchAPI("/articles"),
+  const [categories, homepage] = await Promise.all([
     fetchAPI("/categories"),
     fetchAPI("/homepage"),
-    fetchAPI("/blog"),
+
   ])
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ["homepage", "footer"])),
-      articles,
       categories,
       homepage,
-      blog,
     },
     revalidate: 1,
   }
