@@ -35,7 +35,7 @@ const Home = ({ articles, categories, homepage, blog }) => {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   // Run API calls in parallel
   const [categories, homepage] = await Promise.all([
     fetchAPI("/categories"),
