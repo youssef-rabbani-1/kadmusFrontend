@@ -48,7 +48,6 @@ export async function getServerSideProps({ locale }) {
       categories,
       homepage,
     },
-    revalidate: 1,
   }
 }
 

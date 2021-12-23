@@ -112,7 +112,6 @@ export async function getServerSideProps({ params, locale }) {
       guide: guides[0],
       categories,
     },
-    revalidate: 1,
   }
 }
 
