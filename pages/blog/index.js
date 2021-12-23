@@ -49,7 +49,7 @@ const App = ({ articles, categories, homepage, blog }) => {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   // Run API calls in parallel
   const [articles, categories, homepage, blog] = await Promise.all([
     fetchAPI(`/articles?_locale=${locale.toString().substring(0, 2)}`),

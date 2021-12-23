@@ -52,7 +52,7 @@ const App = ({ guides, homepage }) => {
   )
 }
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({ locale }) {
   // Run API calls in parallel
   const [guides, homepage] = await Promise.all([
     fetchAPI("/guides"),

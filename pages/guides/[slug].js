@@ -102,7 +102,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params, locale }) {
+export async function getServerSideProps({ params, locale }) {
   const guides = await fetchAPI(`/guides?slug=${params.slug}`)
   const categories = await fetchAPI("/categories")
 
