@@ -22,7 +22,6 @@ function Dashboard({ data }) {
 
   return (
     <div className="dashboard">
-
       <div className="chart-container">
         <Line data={data} options={opts} />
       </div>

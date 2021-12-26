@@ -11,7 +11,8 @@ const coins = [
   {
     id: "BTC-USD",
     name: "Bitcoin",
-    description:"Bitcoin is an invention that, for the first time in history, enabled a group of software users to create and manage a digital money supply outside the control of any government or bank. A revolutionary idea when introduced in 2009, Bitcoin continues to have implications that are just beginning to be understood and explored by technologists and economists today."
+    description:
+      "Bitcoin is an invention that, for the first time in history, enabled a group of software users to create and manage a digital money supply outside the control of any government or bank. A revolutionary idea when introduced in 2009, Bitcoin continues to have implications that are just beginning to be understood and explored by technologists and economists today.",
   },
   {
     id: "ETH-USD",
@@ -29,7 +30,7 @@ const coins = [
     id: "SOL-USD",
     name: "Solana",
     description:
-    "Solana is a platform that seeks to provide a foundation for decentralized applications (dapps) in a way that prioritizes scalability. With this aim, Solana is one of several competing blockchain projects such as Ethereum, Zilliqa, or Cardano that hopes to grow an ecosystem of cryptocurrency-powered products and services.",
+      "Solana is a platform that seeks to provide a foundation for decentralized applications (dapps) in a way that prioritizes scalability. With this aim, Solana is one of several competing blockchain projects such as Ethereum, Zilliqa, or Cardano that hopes to grow an ecosystem of cryptocurrency-powered products and services.",
   },
   {
     id: "DOT-USD",
@@ -56,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     margin: "36px 0",
   },
-  title:{
-    marginBottom:"36px"
+  title: {
+    marginBottom: "36px",
   },
   description: {
     padding: "0 36px",
@@ -68,7 +69,7 @@ function App() {
   const [selectedCoin, setCoin] = useState(
     coins.find((x) => x.id === "BTC-USD")
   )
-  const {title, description, buttons } = useStyles()
+  const { title, description, buttons } = useStyles()
 
   return (
     <Grid container className={description}>
@@ -93,7 +94,9 @@ function App() {
         </ButtonGroup>
       </Grid>
       <Grid item xs={12} md={6}>
-        <Typography variant="h5" className={title}>What is {selectedCoin.name}?</Typography>
+        <Typography variant="h5" className={title}>
+          What is {selectedCoin.name}?
+        </Typography>
         <Typography variant="body1">{selectedCoin.description}</Typography>
       </Grid>
       <Grid item xs={12} md={6}>

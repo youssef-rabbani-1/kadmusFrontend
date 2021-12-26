@@ -55,8 +55,8 @@ const Guide = ({ guide }) => {
           alignItems="center"
         >
           <Grid item xs={12} className={image}>
-{            <NextImage image={guide.image} className={container} />
-}          </Grid>
+            {<NextImage image={guide.image} className={container} />}{" "}
+          </Grid>
           <Grid item xs={12} lg={10} className={container}>
             <Typography variant={mobile ? "h4" : "h3"}>
               {guide.title}
