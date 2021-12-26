@@ -57,8 +57,8 @@ const headersData = [
     href: "/guides",
   },
   {
-    label: "About Us",
-    href: "/",
+    label: "Prices",
+    href: "/prices",
   },
 ]
 export default function Header() {

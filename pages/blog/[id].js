@@ -43,16 +43,20 @@ const Article = ({ article, categories, locale }) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Grid container item xs={12} lg={10} spacing={6}>
+        <Grid container item xs={12} lg={8} spacing={6}>
           <Grid item xs={12}>
             <Typography variant="h3">{article.title}</Typography>
-            <Typography variant="h6" color="textSecondary">
-              {article.description}
-            </Typography>
-            <Typography variant="subtitle2">
-              By {article.author.name} |{" "}
-              {<Moment format="MMM Do YYYY">{article.published_at}</Moment>}
-            </Typography>
+            {article.description ? (
+              <Typography variant="h6" color="textSecondary">
+                {article.description}
+              </Typography>
+            ) : null}
+            {article.author.name ? (
+              <Typography variant="subtitle2">
+                By {article.author.name} |{" "}
+                {<Moment format="MMM Do YYYY">{article.published_at}</Moment>}
+              </Typography>
+            ) : null}
           </Grid>
 
           <Grid item xs={12} lg={8} className={image}>
@@ -103,13 +107,12 @@ const Article = ({ article, categories, locale }) => {
 }*/
 
 export async function getServerSideProps({ params, locale }) {
-  const article = await fetchAPI(
-    `/articles?_locale=${locale
-      .toString()
-      .substring(0, 2)}&id=${params.id.toString()}`
-  )
-  const categories = await fetchAPI("/categories")
-
+  const [article, categories] = await Promise.all([
+    locale == "en-US"
+      ? fetchAPI(`/articles?id=${params.id.toString()}`)
+      : fetchAPI(`/articles?_locale=${locale}&id=${params.id.toString()}`),
+    fetchAPI("/categories"),
+  ])
   return {
     props: {
       ...(await serverSideTranslations(locale, ["footer"])),

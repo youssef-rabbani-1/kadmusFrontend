@@ -91,11 +91,6 @@ export default function App() {
           </Grid>
           <Grid container>
             <Grid item xs={6} md={4}>
-              <Button size="medium" color="primary">
-                {t("cta1")}
-              </Button>
-            </Grid>
-            <Grid item xs={6} md={4}>
               <Button size="medium" variant="contained" className={cta}>
                 {t("cta2")}
               </Button>

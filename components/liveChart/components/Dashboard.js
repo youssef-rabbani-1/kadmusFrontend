@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { Line } from "react-chartjs-2"
 
-function Dashboard({ price, data }) {
+function Dashboard({ data }) {
   const opts = {
     plugins: {},
     legend: {
@@ -19,12 +19,9 @@ function Dashboard({ price, data }) {
     responsive: true,
     maintainAspectRatio: false,
   }
-  if (price === "0.00") {
-    return null
-  }
+
   return (
     <div className="dashboard">
-      {/*<h2>{`$${price}`}</h2>*/}
 
       <div className="chart-container">
         <Line data={data} options={opts} />

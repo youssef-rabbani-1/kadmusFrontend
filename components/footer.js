@@ -91,9 +91,9 @@ export default function App() {
             Guides
           </Typography>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/prices" passHref>
           <Typography variant="subtitle1" className={linkText}>
-            About Us
+            Prices
           </Typography>
         </Link>
       </Grid>

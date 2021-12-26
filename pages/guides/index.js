@@ -55,9 +55,12 @@ const App = ({ guides, homepage }) => {
 export async function getServerSideProps({ locale }) {
   // Run API calls in parallel
   const [guides, homepage] = await Promise.all([
-    fetchAPI("/guides"),
+    locale == "en-US"
+      ? fetchAPI("/guides?_locale=en")
+      : fetchAPI(`/guides?_locale=${locale}`),
     fetchAPI("/homepage"),
   ])
+  console.log(locale)
 
   return {
     props: {

@@ -30,18 +30,16 @@ const Guide = ({ guide }) => {
   const { root, container, content, image } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
 
-  const imageUrl = getStrapiMedia(guide.image)
-
   const seo = {
     metaTitle: guide.title,
     metaDescription: guide.description,
     shareImage: guide.image,
     guide: true,
   }
-
+  console.log(guide)
   return (
     <div className={root}>
-      <Seo seo={seo} />
+      {<Seo seo={seo} />}
       <Grid
         container
         direction="row"
@@ -57,8 +55,8 @@ const Guide = ({ guide }) => {
           alignItems="center"
         >
           <Grid item xs={12} className={image}>
-            <NextImage image={guide.image} className={container} />
-          </Grid>
+{            <NextImage image={guide.image} className={container} />
+}          </Grid>
           <Grid item xs={12} lg={10} className={container}>
             <Typography variant={mobile ? "h4" : "h3"}>
               {guide.title}
@@ -67,8 +65,8 @@ const Guide = ({ guide }) => {
               {guide.description}
             </Typography>
             <Typography variant="subtitle2">
-              By {guide.author.name} |{" "}
-              {<Moment format="MMM Do YYYY">{guide.published_at}</Moment>}
+              By {guide.author?.name} |{" "}
+              {/*<Moment format="MMM Do YYYY">{guide.published_at}</Moment>*/}
             </Typography>
           </Grid>
 
@@ -103,13 +101,16 @@ const Guide = ({ guide }) => {
 }*/
 
 export async function getServerSideProps({ params, locale }) {
-  const guides = await fetchAPI(`/guides?slug=${params.slug}`)
-  const categories = await fetchAPI("/categories")
-
+  const [guide, categories] = await Promise.all([
+    locale == "en-US"
+      ? fetchAPI(`/guides?slug=${params.slug}`)
+      : fetchAPI(`/guides?_locale=${locale}&slug=${params.slug}`),
+    fetchAPI("/categories"),
+  ])
   return {
     props: {
       ...(await serverSideTranslations(locale, ["homepage", "footer"])),
-      guide: guides[0],
+      guide: guide[0],
       categories,
     },
   }
