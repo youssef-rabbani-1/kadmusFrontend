@@ -7,6 +7,7 @@ import { useTranslation } from "next-i18next"
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginBottom:"36px",
     backgroundColor: theme.palette.background.default,
     padding: "0",
     "& video": {
