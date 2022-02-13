@@ -7,16 +7,16 @@ const Image = ({ image, style }) => {
     return getStrapiMedia(image)
   }
   return (
-      <NextImage
-        loader={loader}
-        layout="responsive"
-        width={image.width}
-        height={image.height}
-        objectFit="cover"
-        src={url}
-        id={image.id}
-        alt={alternativeText || ""}
-      />
+    <NextImage
+      loader={loader}
+      layout="responsive"
+      width={image.width}
+      height={image.height}
+      objectFit="cover"
+      src={url}
+      id={image.id}
+      alt={alternativeText || ""}
+    />
   )
 }
 

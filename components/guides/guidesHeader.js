@@ -69,7 +69,7 @@ function App() {
         </Typography>
       </Grid>
       <Grid item xs={6}>
-       { <NextImage image={img} />}
+        {<NextImage image={img} />}
       </Grid>
     </React.Fragment>
   )

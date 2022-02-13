@@ -34,18 +34,14 @@ const useStyles = makeStyles({
 })
 
 export default function App({ guide }) {
-  const { root,title, content } = useStyles()
+  const { root, title, content } = useStyles()
   return (
     <Link as={`/guides/${guide.slug}`} href={"/guides/[slug]"} passHref>
       <Card className={root}>
         <CardActionArea>
           <CardMedia title="img">{<NextImage image={guide.image} />}</CardMedia>
           <CardContent className={content}>
-            <Typography
-              variant="h6"
-              color="textPrimary"
-              className={title}
-            >
+            <Typography variant="h6" color="textPrimary" className={title}>
               {guide.title}
             </Typography>
           </CardContent>

@@ -169,7 +169,7 @@ function App() {
 
       <Grid container item xs={12} md={6}>
         <Grid item xs={12}>
-          <Typography variant="h5">{selectedCoin.name}'s Price</Typography>
+          <Typography variant="h5">{selectedCoin.name} Price</Typography>
         </Grid>
         <Grid item xs={12}>
           <LiveChart pair={selectedCoin.id} />

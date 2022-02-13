@@ -30,7 +30,7 @@ const App = ({ articles, categories, homepage, blog }) => {
   React.useEffect(() => {
     setNavTransparent(false)
   }, [])
-  
+
   const mobile = useMediaQuery("(max-width:600px)")
   const { root, title, body } = useStyles()
   return (
