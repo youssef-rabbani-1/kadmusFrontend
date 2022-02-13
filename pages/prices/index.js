@@ -6,6 +6,10 @@ import LiveChart from "../../components/liveChart"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
+import Menu from "@material-ui/core/Menu"
+import MenuItem from "@material-ui/core/MenuItem"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+import { GlobalContext } from "../_app"
 
 const coins = [
   {
@@ -55,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttons: {
-    margin: "36px 0",
+    margin: "48px 0",
   },
   title: {
     marginBottom: "36px",
@@ -63,44 +67,113 @@ const useStyles = makeStyles((theme) => ({
   description: {
     padding: "0 36px",
   },
+  bottomMargin: {
+    margin: "0 0 84px 0",
+  },
 }))
 
 function App() {
+  const { navTransparency } = React.useContext(GlobalContext)
+  const [navTransparent, setNavTransparent] = navTransparency
+
+  React.useEffect(() => {
+    setNavTransparent(false)
+  }, [])
   const [selectedCoin, setCoin] = useState(
     coins.find((x) => x.id === "BTC-USD")
   )
-  const { title, description, buttons } = useStyles()
+  const { title, description, buttons, bottomMargin } = useStyles()
+  const [anchorEl, setAnchorEl] = React.useState(null)
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+  const mobile = useMediaQuery("(max-width:800px)")
 
   return (
     <Grid container className={description}>
+      <Grid item xs={12}>
+        <Typography variant="h5">The most popular cryptocurrencies</Typography>
+      </Grid>
       <Grid item xs={12} className={buttons}>
-        <ButtonGroup
-          variant="text"
-          color="secondary"
-          aria-label="text primary button group"
-        >
-          {coins.map((coin) => {
-            return (
-              <Button
-                key={coin.id}
-                onClick={() => {
-                  setCoin(coins.find((x) => x.id === coin.id))
-                }}
-              >
-                {coin.name}
-              </Button>
-            )
-          })}
-        </ButtonGroup>
+        {mobile ? (
+          <div>
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              {selectedCoin.name}
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              {coins.map((coin) => {
+                return (
+                  <MenuItem key={coin.id} onClick={handleClose}>
+                    <Button
+                      onClick={() => {
+                        setCoin(coins.find((x) => x.id === coin.id))
+                      }}
+                    >
+                      {coin.name}
+                    </Button>
+                  </MenuItem>
+                )
+              })}
+            </Menu>
+          </div>
+        ) : (
+          <ButtonGroup
+            variant="text"
+            color="secondary"
+            aria-label="text primary button group"
+          >
+            {coins.map((coin) => {
+              return (
+                <Button
+                  key={coin.id}
+                  onClick={() => {
+                    setCoin(coins.find((x) => x.id === coin.id))
+                  }}
+                >
+                  {coin.name}
+                </Button>
+              )
+            })}
+            <Button>See All Crypto Guides</Button>
+          </ButtonGroup>
+        )}
       </Grid>
       <Grid item xs={12} md={6}>
         <Typography variant="h5" className={title}>
           What is {selectedCoin.name}?
         </Typography>
-        <Typography variant="body1">{selectedCoin.description}</Typography>
+        <Typography variant="body1" className={bottomMargin}>
+          {selectedCoin.description}
+        </Typography>
+        {/*       <Grid item xs={12}>
+          <Button variant="contained" color="primary">
+            Learn more
+          </Button>
+        </Grid>*/}
       </Grid>
-      <Grid item xs={12} md={6}>
-        <LiveChart pair={selectedCoin.id} />
+
+      <Grid container item xs={12} md={6}>
+        <Grid item xs={12}>
+          <Typography variant="h5">{selectedCoin.name}'s Price</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <LiveChart pair={selectedCoin.id} />
+        </Grid>
       </Grid>
     </Grid>
   )

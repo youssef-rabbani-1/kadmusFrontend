@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
     },
+    maxWidth: "fit-content",
   },
 }))
 const Articles = ({ articles }) => {

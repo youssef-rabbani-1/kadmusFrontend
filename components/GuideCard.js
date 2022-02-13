@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
     overflow: "hidden",
-
+    minHeight: "96px",
     "@supports (-webkit-line-clamp: 3)": {
       overflow: "hidden",
       textOverflow: "ellipsis",
@@ -27,29 +27,29 @@ const useStyles = makeStyles({
       "-webkit-line-clamp": "3",
       "-webkit-box-orient": "vertical",
     },
+    content: {
+      minHeight: "96px",
+    },
   },
 })
 
 export default function App({ guide }) {
-  const classes = useStyles()
+  const { root,title, content } = useStyles()
   return (
     <Link as={`/guides/${guide.slug}`} href={"/guides/[slug]"} passHref>
-      <Card className={classes.root}>
+      <Card className={root}>
         <CardActionArea>
           <CardMedia title="img">{<NextImage image={guide.image} />}</CardMedia>
-          <CardContent>
+          <CardContent className={content}>
             <Typography
               variant="h6"
               color="textPrimary"
-              className={classes.title}
+              className={title}
             >
               {guide.title}
             </Typography>
           </CardContent>
         </CardActionArea>
-        {/*<CardActions>
-      
-      </CardActions>*/}
       </Card>
     </Link>
   )

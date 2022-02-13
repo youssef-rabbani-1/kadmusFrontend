@@ -15,16 +15,18 @@ import ListItemText from "@material-ui/core/ListItemText"
 
 import Link from "next/link"
 import React from "react"
+import { GlobalContext } from "../pages/_app"
+import NextImage from "../components/image"
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    position: "sticky",
-    backgroundColor: theme.palette.common.black,
+    position: "absolute",
     paddingRight: "79px",
     paddingLeft: "118px",
     "@media (max-width: 900px)": {
       paddingLeft: 0,
     },
+    color: "inherit",
   },
   logo: {
     color: "#FFFEFE",
@@ -61,15 +63,22 @@ const headersData = [
     href: "/prices",
   },
 ]
+const logo = {
+  height: "800",
+  width: "1199",
+  url: "https://res.cloudinary.com/darina-zein-kadmus/image/upload/v1639921589/logo_e4cf9a2614.svg",
+}
 export default function Header() {
   const { header, toolbar, logo, menuButton, drawerContainer } = useStyles()
-
   const [state, setState] = React.useState({
     mobileView: false,
     drawerOpen: false,
   })
 
   const { mobileView, drawerOpen } = state
+
+  const { navTransparency } = React.useContext(GlobalContext)
+  const [navTransparent, setNavTransparent] = navTransparency
 
   React.useEffect(() => {
     const setResponsiveness = () => {
@@ -106,7 +115,7 @@ export default function Header() {
         <IconButton
           {...{
             edge: "start",
-            color: "inherit",
+            color: navTransparent ? "primary" : "inherit",
             "aria-label": "menu",
             "aria-haspopup": "true",
             onClick: handleDrawerOpen,
@@ -141,16 +150,17 @@ export default function Header() {
     })
   }
 
-  const femmecubatorLogo = (
-    <Typography variant="h6" component="h1" className={logo}>
-      Logo
-    </Typography>
-  )
+  const femmecubatorLogo =  <Typography variant="h3">Cadmus</Typography>
+  
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
       return (
         <Link key={label} href={href} passHref>
-          <Button {...{ key: label, color: "inherit", className: menuButton }}>
+          <Button
+            key={label}
+            className={menuButton}
+            style={{ color: navTransparent ? "white" : "black" }}
+          >
             {label}
           </Button>
         </Link>
@@ -159,7 +169,23 @@ export default function Header() {
   }
   return (
     <React.Fragment>
-      <AppBar className={header} elevation={0}>
+      <AppBar
+        className={header}
+        elevation={0}
+        style={
+          navTransparent
+            ? {
+                background: "rgba( 255, 255, 255, 0.25 )",
+                backdropFilter: "blur( 12.5px )",
+                WebkitBackdropFilter: "blur( 12.5px )",
+              }
+            : {
+                background: "rgba( 255, 255, 255, 1 )",
+                backdropFilter: "blur( 12.5px )",
+                WebkitBackdropFilter: "blur( 12.5px )",
+              }
+        }
+      >
         {mobileView ? displayMobile() : displayDesktop()}
       </AppBar>
     </React.Fragment>

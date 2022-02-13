@@ -4,11 +4,10 @@ import NextImage from "../image"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import ReactPlayer from "react-player"
 import { useTranslation } from "next-i18next"
-import Link from "next/link"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: "84px",
+    //marginBottom: "36px",
     backgroundColor: theme.palette.background.default,
     padding: "0",
     "& video": {
@@ -18,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   bannerText: {
-    marginBottom: "36px",
+    textAlign: "center",
+    marginBottom: "48px",
   },
   body: {
     position: "absolute",
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.55)",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
     height: "100%",
     padding: "0 48px",
     "@media (max-width: 600px)": {
@@ -34,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    maxWidth: "430px",
     marginBottom: "24px",
   },
   mainTitle: {
@@ -55,7 +54,7 @@ export default function App() {
   const { root, bannerText, title, coloredTitle, body, secondaryText, cta } =
     useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
-  const { t } = useTranslation("homepage")
+  const { t } = useTranslation("guides")
   return (
     <Grid
       container
@@ -65,7 +64,7 @@ export default function App() {
     >
       <ReactPlayer
         url={
-          "https://res.cloudinary.com/darina-zein-kadmus/video/upload/v1639921663/homepage_banner_bkgd_26529cca0d.mp4"
+          "https://res.cloudinary.com/darina-zein-kadmus/video/upload/v1641654865/guides_banner_video_145d7dace0.mp4"
         }
         playing
         loop
@@ -78,27 +77,21 @@ export default function App() {
         container
         item
         xs={12}
-        justifyContent="flex-start"
+        justifyContent="center"
         alignItems="center"
         className={body}
       >
-        <Grid container item xs={12} md={6}>
+        <Grid
+          container
+          item
+          justifyContent="center"
+          alignItems="center"
+          xs={12}
+        >
           <Grid item xs={12} className={bannerText}>
             <Typography variant="h3" color="primary" className={title}>
-              {t("title")}
+              {t("banner")}
             </Typography>
-            <Typography variant="body1" className={secondaryText}>
-              {t("sub-title")}
-            </Typography>
-          </Grid>
-          <Grid container>
-            <Grid item xs={6} md={4}>
-              <Link href="/guides" passHref>
-                <Button size="medium" variant="contained" className={cta}>
-                  {t("cta2")}
-                </Button>
-              </Link>
-            </Grid>
           </Grid>
         </Grid>
       </Grid>

@@ -10,20 +10,38 @@ import LinkRenderer from "../../components/renderers/LinkRenderer"
 import HeaderRenderer from "../../components/renderers/HeaderRenderer"
 import BodyRenderer from "../../components/renderers/BodyRenderer"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { GlobalContext } from "../_app"
+import { Toolbar } from "@material-ui/core"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     marginTop: "12px",
   },
+  title: {
+    marginBottom: "36px",
+  },
+  author: {
+    marginBottom: "24px",
+  },
   container: {},
   image: {
     padding: "0 !important",
   },
+  marginBottom: {
+    marginBottom: "84px",
+  },
 }))
 
 const Article = ({ article, categories, locale }) => {
-  const { root, container, image } = useStyles()
+  const { navTransparency } = React.useContext(GlobalContext)
+  const [navTransparent, setNavTransparent] = navTransparency
+
+  React.useEffect(() => {
+    setNavTransparent(false)
+  }, [])
+
+  const { root, container, image, marginBottom, title, author } = useStyles()
 
   const imageUrl = getStrapiMedia(article.image)
 
@@ -37,6 +55,7 @@ const Article = ({ article, categories, locale }) => {
   return (
     <div className={root}>
       <Seo seo={seo} />
+      <Toolbar />
       <Grid
         container
         direction="row"
@@ -45,14 +64,16 @@ const Article = ({ article, categories, locale }) => {
       >
         <Grid container item xs={12} lg={8} spacing={6}>
           <Grid item xs={12}>
-            <Typography variant="h3">{article.title}</Typography>
+            <Typography variant="h3" className={title}>
+              {article.title}
+            </Typography>
             {article.description ? (
               <Typography variant="h6" color="textSecondary">
                 {article.description}
               </Typography>
             ) : null}
             {article.author.name ? (
-              <Typography variant="subtitle2">
+              <Typography variant="subtitle2" className={author}>
                 By {article.author.name} |{" "}
                 {<Moment format="MMM Do YYYY">{article.published_at}</Moment>}
               </Typography>
@@ -62,7 +83,7 @@ const Article = ({ article, categories, locale }) => {
           <Grid item xs={12} lg={8} className={image}>
             <NextImage image={article.image} />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={marginBottom}>
             <ReactMarkdown
               renderers={{
                 link: LinkRenderer,

@@ -14,7 +14,7 @@ import NextImage from "./image"
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 800,
-    height: "250px",
+    minHeight: "250px",
   },
   container: {
     height: "100%",
@@ -32,49 +32,48 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: "56.25%", // 16:9
+    paddingTop: "42%", // 16:9
   },
 }))
 
 export default function App({ article }) {
   const classes = useStyles()
-
   return (
-    <Card className={classes.root}>
-      <Grid container className={classes.container}>
-        <Grid container item xs={6} direction="row" alignItems="center">
-          <Grid item xs={12}>
-            <CardMedia title="img">
-              <NextImage image={article.image} />
-            </CardMedia>
+    <Link as={`/blog/${article.id}`} href="/blog/[id]" passHref>
+      <Card className={classes.root}>
+        <Grid container className={classes.container}>
+          <Grid
+            container
+            item
+            xs={12}
+            md={6}
+            direction="row"
+            alignItems="center"
+          >
+            <Grid item xs={12}>
+              <CardMedia title="img">
+                <NextImage image={article.image} />
+              </CardMedia>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container item xs={6}>
-          <Grid container item xs={12} className={classes.content}>
-            <CardContent>
-              <Typography
-                variant="h5"
-                color="textPrimary"
-                className={classes.title}
-              >
-                {article.title}
-              </Typography>
-              {/*<Typography variant="body1" color={"textPrimary"}>
+          <Grid container item xs={12} md={6}>
+            <Grid container item xs={12} className={classes.content}>
+              <CardContent>
+                <Typography
+                  variant="h5"
+                  color="textPrimary"
+                  className={classes.title}
+                >
+                  {article.title}
+                </Typography>
+                {/*<Typography variant="body1" color={"textPrimary"}>
                 article.description
               </Typography>*/}
-            </CardContent>
-          </Grid>
-          <Grid container item xs={12} className={classes.actions}>
-            <CardActions disableSpacing>
-              <Link as={`/blog/${article.id}`} href="/blog/[id]" passHref>
-                <Button variant="outlined" color="primary">
-                  Read More
-                </Button>
-              </Link>
-            </CardActions>
+              </CardContent>
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Card>
+      </Card>
+    </Link>
   )
 }

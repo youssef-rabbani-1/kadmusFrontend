@@ -11,6 +11,7 @@ import HeaderRenderer from "../../components/renderers/HeaderRenderer"
 import BodyRenderer from "../../components/renderers/BodyRenderer"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { GlobalContext } from "../_app"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,14 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {},
   image: {
+    minHeight: "70vh",
+    background: "rgb(16,23,136)",
+    background:
+      "-moz-linear-gradient(90deg, rgba(16,23,136,1) 0%, rgba(84,177,241,1) 94%)",
+    background:
+      "-webkit-linear-gradient(90deg, rgba(16,23,136,1) 0%, rgba(84,177,241,1) 94%)",
+    background:
+      "linear-gradient(90deg, rgba(16,23,136,1) 0%, rgba(84,177,241,1) 94%)",
     padding: "0 !important",
     marginBottom: "24px",
   },
@@ -27,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 const Guide = ({ guide }) => {
+  const { navTransparency } = React.useContext(GlobalContext)
+  const [navTransparent, setNavTransparent] = navTransparency
+
+  React.useEffect(() => {
+    setNavTransparent(true)
+  }, [])
+
   const { root, container, content, image } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
 
@@ -36,7 +52,6 @@ const Guide = ({ guide }) => {
     shareImage: guide.image,
     guide: true,
   }
-  console.log(guide)
   return (
     <div className={root}>
       {<Seo seo={seo} />}
@@ -54,18 +69,17 @@ const Guide = ({ guide }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <Grid item xs={12} className={image}>
-            {<NextImage image={guide.image} className={container} />}{" "}
-          </Grid>
-          <Grid item xs={12} lg={10} className={container}>
+          <Grid container item xs={12} alignItems="center" className={image}>
             <Typography variant={mobile ? "h4" : "h3"}>
               {guide.title}
             </Typography>
+          </Grid>
+          <Grid item xs={12} lg={10} className={container}>
             <Typography variant="h6" color="textSecondary">
               {guide.description}
             </Typography>
             <Typography variant="subtitle2">
-              By {guide.author?.name} |{" "}
+              By {guide.author?.name}
               {/*<Moment format="MMM Do YYYY">{guide.published_at}</Moment>*/}
             </Typography>
           </Grid>

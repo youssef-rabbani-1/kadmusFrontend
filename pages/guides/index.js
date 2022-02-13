@@ -1,27 +1,63 @@
 import React from "react"
-import { Grid } from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
 import Guides from "../../components/guides"
 import { makeStyles } from "@material-ui/core/styles"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Seo from "../../components/seo"
 import { fetchAPI } from "../../lib/api"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { GlobalContext } from "../_app"
+import Banner from "../../components/guides/banner"
+import { useTranslation } from "next-i18next"
+import clsx from "clsx"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+import Headline from "../../components/guides/guidesHeader"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: "12px",
+    "& video": {
+      objectFit: "cover",
+    },
+  },
+  secondaryText: {
+    color: theme.palette.common.white,
+  },
+  padding: {
     padding: "0 4em",
-    "@media (max-width: 600px)": {
+    "@media (max-width: 900px)": {
       padding: "0 12px",
     },
+  },
+  padding2: {
+    padding: "150px 125px 150px 125px",
+    "@media (max-width: 900px)": {
+      padding: "0 12px",
+    },
+  },
+  bottomMargin: {
+    margin: "0 0 84px 0",
   },
   body: {
     minHeight: "90vh",
   },
+  header: {
+    lineHeight: "48px",
+    "@media (max-width: 900px)": {
+      lineHeight: "36px",
+    },
+    color: "#ffff",
+  },
+  bckgd: {
+    background: "#477cd4",
+  },
 }))
 
 const App = ({ guides, homepage }) => {
-  const mobile = useMediaQuery("(max-width:600px)")
+  const { navTransparency } = React.useContext(GlobalContext)
+  const [navTransparent, setNavTransparent] = navTransparency
+
+  React.useEffect(() => {
+    setNavTransparent(true)
+  }, [])
 
   var groupedGuides = guides.reduce(function (obj, guide) {
     var category = guide.category.name
@@ -38,15 +74,24 @@ const App = ({ guides, homepage }) => {
     return obj
   }, {})
 
-  const { root, body } = useStyles()
+  const { t } = useTranslation("guides")
+
+  const { root, body, padding, padding2, bottomMargin, header, bckgd } =
+    useStyles()
+
+  const mobile = useMediaQuery("(max-width:900px)")
+
   return (
-    <div className={root}>
+    <div>
       {/*<Seo seo={homepage.seo} />*/}
-      {/*<Grid container spacing={mobile ? 2 : 6} className={body}>
-        
-      </Grid>*/}
-      <div className={body}>
-        <Guides groupedGuides={groupedGuides} />
+      <div>
+        <Grid className={root} container>
+          <Banner />
+          <Headline />
+        </Grid>
+        <div className={clsx(padding, body, bottomMargin)}>
+          <Guides groupedGuides={groupedGuides} />
+        </div>
       </div>
     </div>
   )
@@ -64,7 +109,11 @@ export async function getServerSideProps({ locale }) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["homepage", "footer"])),
+      ...(await serverSideTranslations(locale, [
+        "homepage",
+        "footer",
+        "guides",
+      ])),
       guides,
       homepage,
     },

@@ -2,8 +2,7 @@ import App from "next/app"
 import Head from "next/head"
 import "../assets/css/style.css"
 import "../components/carousel/Carousel.css"
-
-import { createContext } from "react"
+import { createContext, useState } from "react"
 import { fetchAPI } from "../lib/api"
 import { getStrapiMedia } from "../lib/media"
 import { ThemeProvider } from "@material-ui/core/styles"
@@ -11,18 +10,25 @@ import Layout from "../components/layout"
 import theme from "../src/theme"
 
 import { appWithTranslation } from "next-i18next"
+
 // Store Strapi Global object in context
 export const GlobalContext = createContext({})
 
 const MyApp = ({ Component, pageProps }) => {
   const { global } = pageProps
+  const [navTransparent, setNavTransparent] = useState()
   return (
     <>
       <Head>
         <link rel="shortcut icon" href={getStrapiMedia(global.favicon)} />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalContext.Provider value={global}>
+        <GlobalContext.Provider
+          value={
+            ({ global: global },
+            { navTransparency: [navTransparent, setNavTransparent] })
+          }
+        >
           <Layout logo={global.defaultSeo.shareImage}>
             <Component {...pageProps} />
           </Layout>

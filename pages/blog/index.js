@@ -6,6 +6,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Seo from "../../components/seo"
 import { fetchAPI } from "../../lib/api"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { GlobalContext } from "../_app"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,13 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const App = ({ articles, categories, homepage, blog }) => {
+  const { navTransparency } = React.useContext(GlobalContext)
+  const [navTransparent, setNavTransparent] = navTransparency
+
+  React.useEffect(() => {
+    setNavTransparent(false)
+  }, [])
+  
   const mobile = useMediaQuery("(max-width:600px)")
   const { root, title, body } = useStyles()
   return (

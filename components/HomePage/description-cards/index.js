@@ -1,8 +1,6 @@
 import React from "react"
-import DescriptionCard from "../../descriptionCard"
 import { Grid, makeStyles, Typography } from "@material-ui/core"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-import Link from "next/link"
 import BeginnerCard from "./beginner/card"
 import IntermediateCard from "./intermediate/card"
 import ExpertCard from "./expert/card"
@@ -11,7 +9,6 @@ import { useTranslation } from "next-i18next"
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-
     padding: "48px 48px 84px 48px",
     backgroundColor: theme.palette.background.paper,
     "@media (max-width: 797px)": {
