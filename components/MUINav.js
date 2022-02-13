@@ -150,8 +150,8 @@ export default function Header() {
     })
   }
 
-  const femmecubatorLogo =  <Typography variant="h3">Cadmus</Typography>
-  
+  const femmecubatorLogo = <Typography variant="h3">Cadmus</Typography>
+
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
       return (
