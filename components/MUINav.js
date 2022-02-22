@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     color: "#FFFEFE",
     textAlign: "left",
+    height: "100%",
+    width: "155px",
   },
   menuButton: {
     size: "18px",
@@ -63,18 +65,14 @@ const headersData = [
     href: "/prices",
   },
 ]
-const logo = {
-  height: "800",
-  width: "1199",
-  url: "https://res.cloudinary.com/darina-zein-kadmus/image/upload/v1639921589/logo_e4cf9a2614.svg",
-}
-export default function Header() {
-  const { header, toolbar, logo, menuButton, drawerContainer } = useStyles()
+
+export default function Header(props) {
+  const { header, toolbar, menuButton, drawerContainer, logo } = useStyles()
   const [state, setState] = React.useState({
     mobileView: false,
     drawerOpen: false,
   })
-
+  console.log(props.logo)
   const { mobileView, drawerOpen } = state
 
   const { navTransparency } = React.useContext(GlobalContext)
@@ -99,7 +97,9 @@ export default function Header() {
     return (
       <React.Fragment>
         <Toolbar className={toolbar}>
-          {femmecubatorLogo}
+          <div className={logo}>
+            <NextImage image={props.logo}></NextImage>
+          </div>
           <div>{getMenuButtons()}</div>
         </Toolbar>
       </React.Fragment>
@@ -132,7 +132,9 @@ export default function Header() {
           </div>
         </Drawer>
 
-        <div>{femmecubatorLogo}</div>
+        <div className={logo}>
+          <NextImage image={props.logo}></NextImage>
+        </div>
       </Toolbar>
     )
   }

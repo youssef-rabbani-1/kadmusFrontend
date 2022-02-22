@@ -8,6 +8,7 @@ import DescriptionBanner from "../components/HomePage/description-banner"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import { GlobalContext } from "./_app"
 import { motion } from "framer-motion"
+import NextImage from "../components/image"
 
 const Home = ({ articles, categories, homepage, blog }) => {
   const { navTransparency } = React.useContext(GlobalContext)

@@ -49,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
   cta: {
     color: theme.palette.common.white,
     background: "#477cd4",
+    borderRadius: "25px",
+    width: "160px",
+    height: "45px",
   },
 }))
 export default function App() {

@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   bottomMargin: {
-    margin: "0 0 84px 0",
+    //margin: "0 0 84px 0",
   },
   child: {
     zIndex: "1000",

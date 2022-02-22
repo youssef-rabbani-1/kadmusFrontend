@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Link from "next/link"
 import { useTranslation } from "next-i18next"
+import NextImage from "../components/image"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,8 +45,14 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     padding: "0 !important",
   },
+  logo: {
+    color: "#FFFEFE",
+    textAlign: "left",
+    height: "100%",
+    width: "155px",
+  },
 }))
-export default function App() {
+export default function App(props) {
   const {
     root,
     container,
@@ -56,6 +63,7 @@ export default function App() {
     content,
     iconButton,
     section,
+    logo,
   } = useStyles()
   const mobile = useMediaQuery("(max-width:600px)")
   const { t } = useTranslation("footer")
@@ -64,9 +72,9 @@ export default function App() {
     <Grid container className={root}>
       <Grid item xs={12} md={4} className={content}>
         <div className={section}>
-          <Typography variant="h5" color="primary" className={title}>
-            Logo
-          </Typography>
+          <div className={logo}>
+            <NextImage image={props.logo}></NextImage>
+          </div>
           <Typography variant="body2" color="primary" className={description}>
             {t("description")}
           </Typography>
