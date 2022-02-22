@@ -65,8 +65,8 @@ const levels = [
   {
     text: "Learn the necessary skills to boost your trading and make the proper investments through our strategies.",
     bkgd: "#477cd4",
-    cta:"Start Now",
-    link:"/guides",
+    cta: "Start Now",
+    link: "/guides",
     image: {
       height: "800",
       width: "1199",
@@ -76,8 +76,8 @@ const levels = [
   {
     text: "Get the latest Cryptocurrency news! Stay up to date with the latest trends and maximize your gains by keeping up to date with the Cadmus newsletter",
     bkgd: "#1d32b2",
-    cta:"Get the latest news",
-    link:"/blog",
+    cta: "Get the latest news",
+    link: "/blog",
     image: {
       height: "800",
       width: "1199",
@@ -87,8 +87,8 @@ const levels = [
   {
     text: "Dive deep into Cryptocurrencies. Cadmus provides detailed information on the the major cryptocurries with live tradig prices.",
     bkgd: "#0385e6",
-    cta:"Learn More",
-    link:"/prices",
+    cta: "Learn More",
+    link: "/prices",
     image: {
       height: "800",
       width: "1199",
@@ -129,11 +129,9 @@ function App() {
           </Typography>
           <div>
             <Link href={level.link} passHref>
-              <Button
-                size="medium"
-                variant="contained"
-                className={cta}
-              >{level.cta}</Button>
+              <Button size="medium" variant="contained" className={cta}>
+                {level.cta}
+              </Button>
             </Link>
           </div>
         </Grid>
