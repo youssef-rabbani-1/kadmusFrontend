@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   body: {
     minHeight: "70vh",
+    marginBottom: "50px",
   },
 }))
 

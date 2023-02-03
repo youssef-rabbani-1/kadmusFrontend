@@ -23,13 +23,13 @@ function GroupedGuides({ key, guides }) {
 
   return guides.map((item) => {
     return (
-      <CarouselItem key={`${item.id}`}>
-        <Grid item>
-          <Paper className={card} elevation={0}>
-            <Card guide={item} />
-          </Paper>
-        </Grid>
-      </CarouselItem>
+      //  { <CarouselItem key={`${item.id}`}>
+      //   </CarouselItem>}
+      <Grid item>
+        <Paper className={card} elevation={0}>
+          <Card guide={item} />
+        </Paper>
+      </Grid>
     )
   })
 }
@@ -45,9 +45,11 @@ const App = ({ groupedGuides }) => {
             {key}
           </Typography>
         </Grid>
-        <Carousel className={content}>
+        {/* {<Carousel className={content}>
+        </Carousel>} */}
+        <Grid container spacing={7}>
           <GroupedGuides element guides={groupedGuides[key]} />
-        </Carousel>
+        </Grid>
       </Grid>
     )
   })

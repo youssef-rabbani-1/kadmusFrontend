@@ -1,20 +1,20 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
-import CardHeader from "@material-ui/core/CardHeader"
 import CardMedia from "@material-ui/core/CardMedia"
 import CardContent from "@material-ui/core/CardContent"
-import CardActions from "@material-ui/core/CardActions"
 import Typography from "@material-ui/core/Typography"
-import Grid from "@material-ui/core/Grid"
-import Button from "@material-ui/core/Button"
+import CardActionArea from "@material-ui/core/CardActionArea"
 import Link from "next/link"
-import NextImage from "./image"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 800,
     minHeight: "250px",
+    "@media (min-width: 960px)": {
+      //maxHeight: 250,
+    },
   },
   container: {
     height: "100%",
@@ -32,47 +32,56 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: "42%", // 16:9
+    //paddingTop: "42%", // 16:9
   },
 }))
 
 export default function App({ article }) {
   const classes = useStyles()
+  const mobile = useMediaQuery("(max-width:960px)")
+
   return (
     <Link as={`/blog/${article.id}`} href="/blog/[id]" passHref>
-      <Card className={classes.root}>
-        <Grid container className={classes.container}>
-          <Grid
-            container
-            item
-            xs={12}
-            md={6}
-            direction="row"
-            alignItems="center"
-          >
-            <Grid item xs={12}>
-              <CardMedia title="img">
-                <NextImage image={article.image} />
-              </CardMedia>
-            </Grid>
-          </Grid>
-          <Grid container item xs={12} md={6}>
-            <Grid container item xs={12} className={classes.content}>
-              <CardContent>
-                <Typography
-                  variant="h5"
-                  color="textPrimary"
-                  className={classes.title}
-                >
-                  {article.title}
-                </Typography>
-                {/*<Typography variant="body1" color={"textPrimary"}>
-                article.description
-              </Typography>*/}
-              </CardContent>
-            </Grid>
-          </Grid>
+      {/* {   <Grid container className={classes.container}>
+        <Grid container item xs={12} md={6} direction="row" alignItems="center">
+          <CardMedia title="img">
+            <NextImage image={article.image} />
+          </CardMedia>
         </Grid>
+        <Grid container item xs={12} md={6} className={classes.content}>
+          <CardContent>
+            <Typography
+              variant={mobile ? "h6" : "h5"}
+              color="textPrimary"
+              className={classes.title}
+            >
+              {article.title}
+            </Typography>
+            {/*<Typography variant="body1" color={"textPrimary"}>
+                article.description
+              </Typography>}
+          </CardContent>
+        </Grid>
+      </Grid>} */}
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt="img"
+            height="240"
+            image={article.image.url}
+            title="img"
+          />
+          <CardContent>
+            <Typography gutterBottom variant={mobile ? "h6" : "h5"}>
+              {article.title}
+            </Typography>
+            {/* {<Typography variant="body2" color="textSecondary" component="p">
+            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+            across all continents except Antarctica
+          </Typography>} */}
+          </CardContent>
+        </CardActionArea>
       </Card>
     </Link>
   )

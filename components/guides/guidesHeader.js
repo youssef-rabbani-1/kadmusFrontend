@@ -9,14 +9,14 @@ import NextImage from "../image"
 const useStyles = makeStyles((theme) => ({
   padding2: {
     padding: "150px 125px 150px 125px",
-    "@media (max-width: 900px)": {
+    "@media (max-width: 960px)": {
       padding: "0 12px",
     },
   },
   header: {
     lineHeight: "48px",
     color: "#000",
-    "@media (max-width: 900px)": {
+    "@media (max-width: 960px)": {
       padding: "48px",
       textAlign: "center",
       lineHeight: "36px",
@@ -40,11 +40,11 @@ const useStyles = makeStyles((theme) => ({
 const img = {
   height: "800",
   width: "1199",
-  url: "https://res.cloudinary.com/darina-zein-kadmus/image/upload/v1644510462/prices_e0ecfb5964.jpg",
+  url: "https://res.cloudinary.com/darina-zein-kadmus/image/upload/v1644509476/learning_33f6eb5a57.jpg",
 }
 function App() {
   const { t } = useTranslation("guides")
-  const mobile = useMediaQuery("(max-width:900px)")
+  const mobile = useMediaQuery("(max-width:960px)")
   const { padding2, bottomMargin, bckgd, header, child } = useStyles()
   return mobile ? (
     <React.Fragment>
@@ -68,7 +68,9 @@ function App() {
           {t("header")}
         </Typography>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={6}  style={{
+         // backgroundImage: `url("https://res.cloudinary.com/darina-zein-kadmus/image/upload/v1644509476/learning_33f6eb5a57.jpg")`,
+        }}>
         {<NextImage image={img} />}
       </Grid>
     </React.Fragment>

@@ -12,6 +12,7 @@ import BodyRenderer from "../../components/renderers/BodyRenderer"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import { GlobalContext } from "../_app"
 import { Toolbar } from "@material-ui/core"
+import clsx from "clsx"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +32,16 @@ const useStyles = makeStyles((theme) => ({
   marginBottom: {
     marginBottom: "84px",
   },
+  contentPadding: {
+    "@media (min-width: 960px)": {
+      padding: "0 !important",
+    },
+  },
+  titlePadding: {
+    "@media (min-width: 960px)": {
+      padding: "48px 0 0 0 !important",
+    },
+  },
 }))
 
 const Article = ({ article, categories, locale }) => {
@@ -41,7 +52,16 @@ const Article = ({ article, categories, locale }) => {
     setNavTransparent(false)
   }, [])
 
-  const { root, container, image, marginBottom, title, author } = useStyles()
+  const {
+    root,
+    container,
+    image,
+    marginBottom,
+    title,
+    author,
+    contentPadding,
+    titlePadding,
+  } = useStyles()
 
   const imageUrl = getStrapiMedia(article.image)
 
@@ -63,7 +83,7 @@ const Article = ({ article, categories, locale }) => {
         alignItems="center"
       >
         <Grid container item xs={12} lg={8} spacing={6}>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={clsx(titlePadding)}>
             <Typography variant="h3" className={title}>
               {article.title}
             </Typography>
@@ -83,7 +103,7 @@ const Article = ({ article, categories, locale }) => {
           <Grid item xs={12} lg={8} className={image}>
             <NextImage image={article.image} />
           </Grid>
-          <Grid item xs={12} className={marginBottom}>
+          <Grid item xs={12} className={clsx(marginBottom, contentPadding)}>
             <ReactMarkdown
               renderers={{
                 link: LinkRenderer,

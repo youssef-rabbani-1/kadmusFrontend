@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       boxShadow: "0 16px 70px -12.125px rgba(0,0,0,0.3)",
     },
-    maxWidth: "fit-content",
+    maxWidth: "initial",
+    //maxHeight:"300"
   },
 }))
 const Articles = ({ articles }) => {
@@ -19,7 +20,7 @@ const Articles = ({ articles }) => {
 
   return articles.map((article, i) => {
     return (
-      <Grid item xs={12} md={6} key={`${article.slug}`}>
+      <Grid item xs={12} md={4} key={`${article.slug}`}>
         <Paper className={card}>
           <Card article={article} />
         </Paper>

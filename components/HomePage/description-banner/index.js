@@ -6,7 +6,6 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import NextImage from "../../image"
 import clsx from "clsx"
 import { motion } from "framer-motion"
-import { PinDropSharp, SportsRugbySharp } from "@material-ui/icons"
 import Link from "next/link"
 import Button from "@material-ui/core/Button"
 const useStyles = makeStyles((theme) => ({
@@ -24,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "60px !important",
   },
   mobileRoot: {
-    // "@media (max-width: 900px)": {
     height: "100vh",
-    // },
   },
   text: {
     lineHeight: "1.8",
